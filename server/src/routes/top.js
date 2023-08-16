@@ -31,7 +31,7 @@ router.get("/topTracks", async (req, res) => {
       // Access the 'items' array and retrieve the 'name' attribute from each element
 
       const names = data.items.map((item) => item.name);
-      console.log(names);
+      //console.log(names);
       res.json(names);
     })
     .catch((error) => {
@@ -76,7 +76,7 @@ router.get("/test", async (req, res) => {
       name: item.name,
       id: item.id,
     }));
-    console.log(tracksInfo);
+    //console.log(tracksInfo);
     //console.log(names);
     res.json(tracksInfo);
   } catch (error) {
@@ -126,6 +126,50 @@ router.get("/getimg", async (req, res) => {
    
     //console.log("from server side getimg: ", trackimginfo);
     res.json(trackimginfo);
+  } catch (error) {
+    console.error("Error fetching data from server:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+router.get("/topArtists", async (req, res) => {
+  // Check if the access_token exists in the cookies
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  const timeRange = req.query.time_range;
+  const ACCESS_TOKEN = req.cookies["access_token"];
+  if (!ACCESS_TOKEN) {
+    return res.status(401).json({ error: "Access token missing in cookies" });
+  }
+
+  console.log(ACCESS_TOKEN);
+  const apiUrl = `https://api.spotify.com/v1/me/top/artists?time_range=${timeRange}`;
+
+  try {
+    // Use axios.get to make the API call
+    const response = await axios.get(apiUrl, {
+      headers: {
+        Authorization: `Bearer ${ACCESS_TOKEN}`,
+      },
+    });
+
+    if (response.status !== 200) {
+      throw new Error("Network response was not ok.");
+    }
+    const data = response.data;
+
+    const names = data.items.map((item) => item.name);
+    const images = data.items.map((item) => item.images);
+
+    const firstUrls = images.map(array => array[0].url);
+
+    const artistsimginfo = {
+      name: names,
+      img: firstUrls,
+    }
+
+    //console.log(artistsimginfo);
+    res.json(artistsimginfo);
   } catch (error) {
     console.error("Error fetching data from server:", error);
     res.status(500).json({ error: "Internal Server Error" });
