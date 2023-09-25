@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import myImage from "../assets/img2.jpg";
 
 export const TopTracks = () => {
-  const [topTracks, setTopTracks] = useState([]);
+  const [setTopTracks] = useState([]);
   const [data, setData] = useState([]);
   //const imges = new Map();
   const [imges, setImges] = useState(new Map());
@@ -82,7 +82,7 @@ export const TopTracks = () => {
 
     fetchTopTracks();
     fetchData("short_term"); //default data
-  }, []);
+  }, );
 
   useEffect(() => {
     if (ids.length > 0) {
@@ -95,7 +95,7 @@ export const TopTracks = () => {
       <div className="relative h-48 w-3/4 mt-8">
         <img
           src={myImage}
-          alt="image"
+          alt=""
           className="object-cover object-center h-full w-full rounded-xl"
           style={{ width: "75vw" }}
         />

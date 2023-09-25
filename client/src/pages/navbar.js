@@ -13,7 +13,6 @@ export const Navbar = () => {
   const tokenLifetimeInSeconds = parseInt(Cookies.get("spotifyExpiry"));
 
   const location = useLocation();
-  const isActive = location.pathname === "/mytop/TopTracks";
   const showNavbar = useLocation().pathname !== "/";
 
   const logout = () => {
@@ -45,7 +44,7 @@ export const Navbar = () => {
     return () => {
       clearInterval(tokenCheckInterval);
     };
-  }, []);
+  }, [expiredToken]);
 
   const handleRefreshOrNavigate = () => {
     if (location.pathname === "/mytop/TopTracks") {

@@ -43,7 +43,7 @@ export const TopArtists = () => {
       <div className="relative h-48 w-3/4 mt-8">
         <img
           src={myImage} // Replace with your image source URL
-          alt="image"
+          alt=""
           className="object-cover object-center h-full w-full rounded-xl"
           style={{ width: '75vw' }}
         />
