@@ -44,7 +44,7 @@ export const Navbar = () => {
     return () => {
       clearInterval(tokenCheckInterval);
     };
-  }, [expiredToken]);
+  },);
 
   const handleRefreshOrNavigate = () => {
     if (location.pathname === "/mytop/TopTracks") {

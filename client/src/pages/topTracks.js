@@ -88,7 +88,7 @@ export const TopTracks = () => {
     if (ids.length > 0) {
       fetchimges();
     }
-  }, [ids]);
+  }, );
 
   return (
     <div className="min-h-screen w-screen bg-gray-200 flex flex-col items-center">
