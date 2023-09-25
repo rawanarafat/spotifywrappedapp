@@ -10,7 +10,7 @@ router.get("/login", async (req, res) => {
     const queryString = querystring.stringify({
       response_type: "code",
       client_id: "5bb070ff4bdd46cf8598411dc53e7b8a",
-      redirect_uri: "http://localhost:7001/auth/callback",
+      redirect_uri: "https://spotifywrappedapp-5143b8c04d17.herokuapp.com/auth/callback",
       scope: "user-library-read, user-top-read",
     });
 
@@ -36,7 +36,7 @@ router.get("/callback", async function (req, res) {
       method: "post",
       params: {
         code: code,
-        redirect_uri: "http://localhost:7001/auth/callback",
+        redirect_uri: "https://spotifywrappedapp-5143b8c04d17.herokuapp.com/auth/callback",
         grant_type: "authorization_code",
       },
       headers: {
