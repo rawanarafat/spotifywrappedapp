@@ -11,7 +11,7 @@ export const Home = () => {
   // Function to handle form submission
   const handleSubmit = (e) => {
     axios
-      .get("/auth/login")
+      .get("https://spotifywrappedapp-5143b8c04d17.herokuapp.com/auth/login")
       .then((response) => {
         console.log("success logining in: ", response.data);
         // Redirect the user to the Spotify authorization URL
