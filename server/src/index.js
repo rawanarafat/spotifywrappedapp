@@ -20,5 +20,5 @@ app.use(express.json());
 
 app.use("/auth", userRouter);
 app.use("/mytop", topRouter);
-
-app.listen(7001, () => console.log("Server started"));
+app.listen(process.env.PORT || 7001)
+//app.listen(7001, () => console.log("Server started"));
