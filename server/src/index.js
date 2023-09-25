@@ -11,8 +11,8 @@ const app = express();
 
 const corsOptions = {
   origin: [
-    "https://your-netlify-url.netlify.app",
-    "https://your-heroku-app.herokuapp.com",
+    "https://legendary-alpaca-475d99.netlify.app",
+    "https://spotifywrappedapp-5143b8c04d17.herokuapp.com/",
   ],
   // Add any other required CORS options here
 };
